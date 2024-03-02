@@ -8,6 +8,7 @@ export default function BookElement() {
             </BookImage>
             <BookInfo>
                 <h2>Senhor dos aneis</h2>
+                <span className="authon">J. R. R. Tolkien</span>
                 <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     Veritatis nam aut harum mollitia doloribus corporis dolore,
@@ -19,7 +20,7 @@ export default function BookElement() {
                         <strong>Páginas:</strong> 259
                     </span>
                     <span>
-                        <strong>Preço médio:</strong> R$100
+                        <strong>Ano:</strong> 2002
                     </span>
                 </div>
             </BookInfo>
@@ -32,7 +33,7 @@ export default function BookElement() {
     );
 }
 
-const ButtonAction = styled.div<{ color: string }>`
+export const ButtonAction = styled.button<{ color: string }>`
     background-color: ${({ color }) => color};
     color: white;
     border-radius: 8px;
@@ -42,6 +43,13 @@ const ButtonAction = styled.div<{ color: string }>`
     align-items: center;
     justify-content: space-between;
     font-size: 14px;
+    cursor: pointer;
+
+    border: none;
+
+    &:hover {
+        opacity: 0.8;
+    }
 `;
 
 const BookActions = styled.div`
@@ -60,6 +68,7 @@ const BookActions = styled.div`
 
 const BookElementContainer = styled.div`
     position: relative;
+    cursor: pointer;
     background-color: white;
     padding: 16px 24px;
 
