@@ -2,14 +2,15 @@ import InputMain from "@/components/atoms/InputMain";
 import BookList from "@/components/organisms/BookList";
 import { staticBookList } from "@/components/organisms/BookList/arrays";
 import TemplateDefault from "@/components/templates/TemplateDefault";
+import { useRouter } from "next/router";
 
-function App() {
+function Search() {
+
   return (
     <TemplateDefault>
-      <InputMain/>
       <BookList bookData={staticBookList}/>
     </TemplateDefault>
   )
 }
 
-export default App;
+export default Search;

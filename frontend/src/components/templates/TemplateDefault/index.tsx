@@ -12,10 +12,9 @@ export default function TemplateDefault({
     children,
 }: templateDefaultProps) {
     const router = useRouter();
-    console.log(router)
     return (
         <DivTemplateDefault>
-            <Header compact={router.asPath != "/"} />
+            <Header compact={router.asPath != "/"}/>
             <DivContent>{children}</DivContent>
             <Footer />
         </DivTemplateDefault>

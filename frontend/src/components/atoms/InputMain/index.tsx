@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export default function InputMain() {
+
     return (
         <InputContainer>
             <img src="icons/IconSearch.svg" />

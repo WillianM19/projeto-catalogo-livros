@@ -1,6 +1,7 @@
 import InputHeader from "@/components/atoms/InputHeader";
 import InputMain from "@/components/atoms/InputMain";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 interface headerProps {
@@ -9,6 +10,8 @@ interface headerProps {
 
 export default function Header({ compact }: headerProps) {
     const router = useRouter();
+
+
     return (
         <HeaderContainer compact={compact}>
             <HeaderContent compact={compact}>

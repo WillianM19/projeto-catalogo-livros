@@ -7,7 +7,7 @@ import IconEditBook from "/public/icons/IconEditBook.svg";
 import IconBack from "/public/icons/IconBack.svg";
 import { Router, useRouter } from "next/router";
 
-function App() {
+function BookDetail() {
     const router = useRouter();
     return (
         <TemplateDefault>
@@ -16,7 +16,6 @@ function App() {
                     <Image
                         src="https://m.media-amazon.com/images/I/41RBd2DvmgL._SY445_SX342_.jpg"
                         layout="fill"
-                        objectFit="contain"
                         alt="capa"
                     />
                 </BookImage>
@@ -97,7 +96,7 @@ function App() {
     );
 }
 
-export default App;
+export default BookDetail;
 
 const DivButtonActions = styled.div`
     display: flex;

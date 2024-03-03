@@ -34,7 +34,6 @@ export default function BookElement({
                         height={168}
                         width={110}
                         alt=""
-                        objectFit="contain"
                     />
                 </BookImage>
             </Link>

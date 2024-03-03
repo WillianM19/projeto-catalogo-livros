@@ -9,15 +9,19 @@ import Image from "next/image";
 import { useState } from "react";
 import { staticBookList } from "./arrays";
 
-export default function BookList() {
+interface bookListProps {
+    bookData: BookElementProps[]
+}
+
+export default function BookList({bookData}: bookListProps) {
     const [bookListState, setBookListState] =
-        useState<BookElementProps[]>(staticBookList);
+        useState<BookElementProps[]>(bookData);
 
     return (
         <BookListContainer>
             <BookListContent>
                 {bookListState.map((book) => (
-                    <BookElement {...book} />
+                    <BookElement key={book.id} {...book} />
                 ))}
             </BookListContent>
             <BookListAside>
@@ -28,7 +32,6 @@ export default function BookList() {
                         src="images/ImageWelcome.svg"
                         width={150}
                         height={200}
-                        objectFit="contain"
                         alt="welcome image"
                     />
                 </AsideCard>
