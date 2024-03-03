@@ -3,6 +3,8 @@ import Image from "next/image";
 import IconBookDetail from "/public/icons/IconBookDetail.svg";
 import IconRemoveBook from "/public/icons/IconRemoveBook.svg";
 import IconEditBook from "/public/icons/IconEditBook.svg";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export interface BookElementProps {
     id: number;
@@ -22,32 +24,40 @@ export default function BookElement({
     year,
     bookImage,
 }: BookElementProps) {
+    const router = useRouter();
     return (
         <BookElementContainer>
-            <BookImage>
-                <Image
-                    src={bookImage}
-                    height={168}
-                    width={100}
-                    alt=""
-                    objectFit="contain"
-                />
-            </BookImage>
-            <BookInfo>
-                <h2>{title}</h2>
-                <span className="author">{author}</span>
-                <p>{description}</p>
-                <div className="infoFooter">
-                    <span>
-                        <strong>Páginas:</strong> {pageCount}
-                    </span>
-                    <span>
-                        <strong>Ano:</strong> {year}
-                    </span>
-                </div>
-            </BookInfo>
+            <Link href={"/bookdetail"}>
+                <BookImage>
+                    <Image
+                        src={bookImage}
+                        height={168}
+                        width={110}
+                        alt=""
+                        objectFit="contain"
+                    />
+                </BookImage>
+            </Link>
+            <Link href={"/bookdetail"}>
+                <BookInfo>
+                    <h2>{title}</h2>
+                    <span className="author">{author}</span>
+                    <p>{description}</p>
+                    <div className="infoFooter">
+                        <span>
+                            <strong>Páginas:</strong> {pageCount}
+                        </span>
+                        <span>
+                            <strong>Ano:</strong> {year}
+                        </span>
+                    </div>
+                </BookInfo>
+            </Link>
             <BookActions>
-                <ButtonAction color="#2eca50">
+                <ButtonAction
+                    color="#2eca50"
+                    onClick={() => router.push("/bookdetail")}
+                >
                     <Image
                         src={IconBookDetail}
                         width={14}
@@ -133,6 +143,8 @@ const BookElementContainer = styled.div`
 `;
 
 const BookImage = styled.div`
+    display: flex;
+    align-items: center;
     img {
         height: 100%;
         border-radius: 8px;
@@ -148,9 +160,10 @@ const BookInfo = styled.div`
 
     p {
         max-width: 600px;
-        height: 80px;
+        height: 65px;
         margin: 12px 0;
         overflow: hidden;
+        line-height: normal;
 
         font-size: 14px;
         text-overflow: ellipsis;

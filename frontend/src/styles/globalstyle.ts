@@ -15,4 +15,10 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Poppins", cursive;
     color: #35323d;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    line-height: inherit;
+  }
 `;

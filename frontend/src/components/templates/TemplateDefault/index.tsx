@@ -2,15 +2,20 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import Header from "../../molecules/Header";
 import Footer from "../../molecules/Footer";
+import { useRouter } from "next/router";
 
 interface templateDefaultProps {
     children: ReactNode;
 }
 
-export default function TemplateDefault({ children }: templateDefaultProps) {
+export default function TemplateDefault({
+    children,
+}: templateDefaultProps) {
+    const router = useRouter();
+    console.log(router)
     return (
         <DivTemplateDefault>
-            <Header />
+            <Header compact={router.asPath != "/"} />
             <DivContent>{children}</DivContent>
             <Footer />
         </DivTemplateDefault>
@@ -37,5 +42,4 @@ const DivTemplateDefault = styled.div`
     flex-direction: column;
     align-items: center;
     background-color: rgb(231, 242, 255);
-    #35323d
 `;

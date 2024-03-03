@@ -24,7 +24,13 @@ export default function BookList() {
                 <AsideCard>
                     <h2>Boas vindas</h2>
                     <p>Busque, cadastre e edite seu catalogo agora mesmo!</p>
-                    <img src="images/ImageWelcome.svg" width="100%" />
+                    <Image
+                        src="images/ImageWelcome.svg"
+                        width={150}
+                        height={200}
+                        objectFit="contain"
+                        alt="welcome image"
+                    />
                 </AsideCard>
                 <AsideCard>
                     <h2>Ferramentas</h2>
