@@ -79,7 +79,7 @@ const BookListAside = styled.div`
 
 const AsideCard = styled.div<{ customHeight?: number }>`
     background-color: white;
-    padding: 8px 16px;
+    padding: 16px;
     border-radius: 16px;
     min-height: ${({ customHeight }) =>
         customHeight ? customHeight : "max-content"}px;
