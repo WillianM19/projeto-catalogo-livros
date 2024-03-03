@@ -30,7 +30,7 @@ const InputContainer = styled.div`
         height: 100%;
         border: none;
         outline: none;
-        font-size: 24px;
+        font-size: 18px;
         border-radius: 16px;
     }
 `;

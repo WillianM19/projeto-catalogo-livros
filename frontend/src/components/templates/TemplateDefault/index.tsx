@@ -36,5 +36,6 @@ const DivTemplateDefault = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #eaeaea;
+    background-color: rgb(231, 242, 255);
+    #35323d
 `;

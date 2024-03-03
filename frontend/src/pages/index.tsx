@@ -8,7 +8,7 @@ function App() {
       <InputMain/>
       <BookList />
     </TemplateDefault>
-  );
+  )
 }
 
 export default App;
