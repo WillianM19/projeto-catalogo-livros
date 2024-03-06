@@ -11,3 +11,14 @@ export async function getBooks() {
       return error
     }
   }
+
+export async function getBookDetail(bookId: number) {
+  try {
+    const res = await apiRequest.get(
+      `api/books/${bookId}/`,
+    )
+    return res.data
+  } catch (error) {
+    return error
+  }
+}

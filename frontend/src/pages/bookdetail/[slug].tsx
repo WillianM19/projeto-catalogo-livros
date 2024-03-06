@@ -1,61 +1,54 @@
 import TemplateDefault from "@/components/templates/TemplateDefault";
 import styled from "styled-components";
 import Image from "next/image";
-import { ButtonAction } from "@/components/molecules/BookElement";
+import {
+    BookElementProps,
+    ButtonAction,
+} from "@/components/molecules/BookElement";
 import IconRemoveBook from "/public/icons/IconRemoveBook.svg";
 import IconEditBook from "/public/icons/IconEditBook.svg";
 import IconBack from "/public/icons/IconBack.svg";
 import { Router, useRouter } from "next/router";
+import { getBookDetail } from "@/utils/requests";
+import { useEffect, useLayoutEffect, useState } from "react";
 
-function BookDetail() {
+export default function BookDetail() {
     const router = useRouter();
+    const [bookData, setBookData] = useState<BookElementProps>();
+
+    async function getBookData() {
+        const res = await getBookDetail(Number(router.query.slug as string));
+        setBookData(res);
+    }
+    useLayoutEffect(() => {
+        getBookData();
+    }, []);
+
     return (
         <TemplateDefault>
             <BookDetailWrapper>
-                <BookImage>
-                    <Image
-                        src="https://m.media-amazon.com/images/I/41RBd2DvmgL._SY445_SX342_.jpg"
-                        layout="fill"
-                        alt="capa"
-                    />
-                </BookImage>
+                {bookData?.bookImage && (
+                    <BookImage>
+                        <Image
+                            src={bookData?.bookImage}
+                            layout="fill"
+                            alt="capa"
+                        />
+                    </BookImage>
+                )}
                 <ContentContainer>
-                    <h1>Senhor dos aneis</h1>
+                    <h1>{bookData?.title}</h1>
                     <span className="author">
-                        Escrito por • J. R. R. Tolkien
+                        Escrito por • {bookData?.author}
                     </span>
-                    <p>
-                        A Sociedade do Anel começa no Condado, a região rural do
-                        oeste da Terra-média onde vivem os diminutos e pacatos
-                        hobbits. Bilbo Bolseiro, um dos raros aventureiros desse
-                        povo, cujas peripécias foram contadas em O Hobbit,
-                        resolve ir embora do Condado e deixa sua considerável
-                        herança nas mãos de seu jovem parente Frodo A Sociedade
-                        do Anel começa no Condado, a região rural do oeste da
-                        Terra-média onde vivem os diminutos e pacatos hobbits.
-                        Bilbo Bolseiro, um dos raros aventureiros desse povo,
-                        cujas peripécias foram contadas em O Hobbit, resolve ir
-                        embora do Condado e deixa sua considerável herança nas
-                        mãos de seu jovem parente Frodo A Sociedade do Anel
-                        começa no Condado, a região rural do oeste da
-                        Terra-média onde vivem os diminutos e pacatos hobbits.
-                        Bilbo Bolseiro, um dos raros aventureiros desse povo,
-                        cujas peripécias foram contadas em O Hobbit, resolve ir
-                        embora do Condado e deixa sua considerável herança nas
-                        mãos de seu jovem parente Frodo A Sociedade do Anel
-                        começa no Condado, a região rural do oeste da
-                        Terra-média onde vivem os diminutos e pacatos hobbits.
-                        Bilbo Bolseiro, um dos raros aventureiros desse povo,
-                        cujas peripécias foram contadas em O Hobbit, resolve ir
-                        embora do Condado e deixa sua considerável herança nas
-                        mãos de seu jovem parente Frodo.
-                    </p>
+                    <p>{bookData?.description}</p>
                     <DivContentInfos>
                         <span>
-                            <strong>Ano de lançamento:</strong> 2022
+                            <strong>Ano de lançamento:</strong> {bookData?.year}
                         </span>
                         <span>
-                            <strong>Quantidade de páginas:</strong> 300
+                            <strong>Quantidade de páginas:</strong>{" "}
+                            {bookData?.pageCount}
                         </span>
                     </DivContentInfos>
                     <DivButtonActions>
@@ -95,8 +88,6 @@ function BookDetail() {
         </TemplateDefault>
     );
 }
-
-export default BookDetail;
 
 const DivButtonActions = styled.div`
     display: flex;

@@ -17,6 +17,7 @@ export interface BookElementProps {
 }
 
 export default function BookElement({
+    id,
     title,
     author,
     description,
@@ -27,7 +28,7 @@ export default function BookElement({
     const router = useRouter();
     return (
         <BookElementContainer>
-            <Link href={"/bookdetail"}>
+            <Link href={`/bookdetail/${id}`}>
                 <BookImage>
                     <Image
                         src={bookImage}
@@ -37,7 +38,7 @@ export default function BookElement({
                     />
                 </BookImage>
             </Link>
-            <Link href={"/bookdetail"}>
+            <Link href={`/bookdetail/${id}`}>
                 <BookInfo>
                     <h2>{title}</h2>
                     <span className="author">{author}</span>
@@ -55,7 +56,7 @@ export default function BookElement({
             <BookActions>
                 <ButtonAction
                     color="#2eca50"
-                    onClick={() => router.push("/bookdetail")}
+                    onClick={() => router.push(`/bookdetail/${id}`)}
                 >
                     <Image
                         src={IconBookDetail}
