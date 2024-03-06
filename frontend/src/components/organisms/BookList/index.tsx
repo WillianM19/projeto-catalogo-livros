@@ -8,12 +8,13 @@ import IconGear from "/public/icons/IconGear.svg";
 import Image from "next/image";
 import { useState } from "react";
 import { staticBookList } from "./arrays";
+import { apiRoute } from "@/utils/api";
 
 interface bookListProps {
-    bookData: BookElementProps[]
+    bookData: BookElementProps[];
 }
 
-export default function BookList({bookData}: bookListProps) {
+export default function BookList({ bookData }: bookListProps) {
     const [bookListState, setBookListState] =
         useState<BookElementProps[]>(bookData);
 
@@ -21,7 +22,15 @@ export default function BookList({bookData}: bookListProps) {
         <BookListContainer>
             <BookListContent>
                 {bookListState.map((book) => (
-                    <BookElement key={book.id} {...book} />
+                    <BookElement
+                        key={book.id}
+                        {...book}
+                        onRemove={(bookId) =>
+                            setBookListState((prev) =>
+                                prev.filter((book) => book.id != bookId)
+                            )
+                        }
+                    />
                 ))}
             </BookListContent>
             <BookListAside>
@@ -38,7 +47,10 @@ export default function BookList({bookData}: bookListProps) {
                 <AsideCard>
                     <h2>Ferramentas</h2>
                     <ButtonTool color="#2eca50">Cadastrar Livro</ButtonTool>
-                    <ButtonTool color="#001CFF">
+                    <ButtonTool
+                        color="#001CFF"
+                        onClick={() => window.open(`${apiRoute}admin/`)}
+                    >
                         Painel administrativo
                     </ButtonTool>
                 </AsideCard>

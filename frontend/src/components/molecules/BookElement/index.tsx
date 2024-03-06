@@ -5,6 +5,7 @@ import IconRemoveBook from "/public/icons/IconRemoveBook.svg";
 import IconEditBook from "/public/icons/IconEditBook.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { deleteBook } from "@/utils/requests";
 
 export interface BookElementProps {
     id: number;
@@ -14,6 +15,7 @@ export interface BookElementProps {
     pageCount: number;
     year: string | number;
     bookImage: string;
+    onRemove: (bookId: number) => void
 }
 
 export default function BookElement({
@@ -24,8 +26,20 @@ export default function BookElement({
     pageCount,
     year,
     bookImage,
+    onRemove,
 }: BookElementProps) {
     const router = useRouter();
+
+    async function removeBookContent() {
+        if(confirm('Você deseja remover este livro?')){
+            await deleteBook(id)
+            alert('Livro Removido')
+            onRemove(id)
+        } else {
+            console.log('Remoção cancelada')
+        }
+    }
+
     return (
         <BookElementContainer>
             <Link href={`/bookdetail/${id}`}>
@@ -75,7 +89,7 @@ export default function BookElement({
                     />
                     Editar
                 </ButtonAction>
-                <ButtonAction color="#f35e5e">
+                <ButtonAction color="#f35e5e" onClick={removeBookContent}>
                     <Image
                         src={IconRemoveBook}
                         width={14}

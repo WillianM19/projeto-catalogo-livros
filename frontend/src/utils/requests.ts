@@ -22,3 +22,14 @@ export async function getBookDetail(bookId: number) {
     return error
   }
 }
+
+export async function deleteBook(bookId: number) {
+  try {
+    const res = await apiRequest.delete(
+      `api/books/${bookId}/`,
+    )
+    return res.data
+  } catch (error) {
+    return error
+  }
+}

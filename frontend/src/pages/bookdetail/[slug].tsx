@@ -9,7 +9,7 @@ import IconRemoveBook from "/public/icons/IconRemoveBook.svg";
 import IconEditBook from "/public/icons/IconEditBook.svg";
 import IconBack from "/public/icons/IconBack.svg";
 import { Router, useRouter } from "next/router";
-import { getBookDetail } from "@/utils/requests";
+import { deleteBook, getBookDetail } from "@/utils/requests";
 import { useEffect, useLayoutEffect, useState } from "react";
 
 export default function BookDetail() {
@@ -17,12 +17,24 @@ export default function BookDetail() {
     const [bookData, setBookData] = useState<BookElementProps>();
 
     async function getBookData() {
-        const res = await getBookDetail(Number(router.query.slug as string));
+        const res = await getBookDetail(Number(router.query.slug));
         setBookData(res);
     }
-    useLayoutEffect(() => {
-        getBookData();
-    }, []);
+    useEffect(() => {
+        if (router.query.slug) {
+            getBookData();
+        }
+    }, [router]);
+
+    async function removeBookContentInDetail() {
+        if(bookData && confirm('Você deseja remover este livro?')){
+            await deleteBook(bookData?.id)
+            alert('Livro Removido')
+            router.replace('/')
+        } else {
+            console.log('Remoção cancelada')
+        }
+    }
 
     return (
         <TemplateDefault>
@@ -73,7 +85,7 @@ export default function BookDetail() {
                             />
                             Editar
                         </ButtonActionDetail>
-                        <ButtonActionDetail color="#f35e5e">
+                        <ButtonActionDetail color="#f35e5e" onClick={removeBookContentInDetail}>
                             <Image
                                 src={IconRemoveBook}
                                 width={16}
