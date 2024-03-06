@@ -1,18 +1,27 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
+import Image from "next/image";
+import IconSearch from "/public/icons/IconSearch.svg";
 
 interface inputMainProps {
     value?: string;
 }
 
 export default function InputMain({ value }: inputMainProps) {
-    const router = useRouter()
-    const [valueState, setValueState] = useState(router.query.q as string || value);
+    const router = useRouter();
+    const [valueState, setValueState] = useState(
+        (router.query.q as string) || value
+    );
 
     return (
         <InputContainer>
-            <img src="icons/IconSearch.svg" />
+            <Image
+                src={IconSearch}
+                width={16}
+                height={16}
+                alt="icone de busca"
+            />
             <input
                 type="text"
                 placeholder="Busque seu livro aqui..."
