@@ -57,10 +57,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
 CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = [
-    "127.0.0.1", 
-    "localhost"
-]
+
 CORS_ALLOW_CREDENTIALS = False
 
 ROOT_URLCONF = 'catalogoLivros.urls'
