@@ -74,6 +74,7 @@ function Create() {
                         draggable={false}
                         placeholder="Descrição do livro"
                         required
+                        maxLength={1000}
                         onChange={(e) =>
                             setFormState((prev) => {
                                 return {

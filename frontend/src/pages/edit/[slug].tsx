@@ -89,6 +89,7 @@ function Edit() {
                             draggable={false}
                             placeholder="Descrição do livro"
                             required
+                            maxLength={1000}
                             defaultValue={formState.description}
                             onChange={(e) =>
                                 setFormState((prev) => {

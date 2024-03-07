@@ -140,7 +140,17 @@ const ContentContainer = styled.div`
         margin: 16px 0;
         height: 100%;
         max-height: 200px;
-        overflow: hidden;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        &::-webkit-scrollbar-track {
+            background: rgb(231, 242, 255);
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #35323d;
+        }
     }
 `;
 

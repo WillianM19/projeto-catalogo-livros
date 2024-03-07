@@ -172,7 +172,7 @@ const BookInfo = styled.div`
 
     p {
         max-width: 600px;
-        height: 65px;
+        height: 60px;
         margin: 12px 0;
         overflow: hidden;
         line-height: normal;
