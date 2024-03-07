@@ -5,7 +5,6 @@ import TemplateDefault from "@/components/templates/TemplateDefault";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Image from "next/image";
-import ImageForm from "/public/images/imageForm.svg";
 import {
     BookElementProps,
     ButtonAction,
@@ -135,7 +134,7 @@ function Create() {
                 </DivInput>
                 <DivImageAside>
                     <Image
-                        src={ImageForm}
+                        src="images/ImageForm.svg"
                         width={400}
                         height={400}
                         alt="image"

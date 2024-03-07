@@ -7,7 +7,11 @@ const nextConfig = {
         hostname: "**",
       },
     ]
-  }
+  },
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+  },
+
 };
 
 export default nextConfig;

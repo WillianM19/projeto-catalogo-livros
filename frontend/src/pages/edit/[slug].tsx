@@ -5,7 +5,7 @@ import TemplateDefault from "@/components/templates/TemplateDefault";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Image from "next/image";
-import ImageEdit from "/public/images/imageEdit.svg";
+import ImageEdit from "images/imageEdit.svg";
 import {
     BookElementProps,
     ButtonAction,
@@ -154,7 +154,7 @@ function Edit() {
                     </DivInput>
                     <DivImageAside>
                         <Image
-                            src={ImageEdit}
+                            src="images/ImageEdit.svg"
                             width={400}
                             height={400}
                             alt="image"

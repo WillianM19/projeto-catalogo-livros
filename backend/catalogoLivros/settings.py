@@ -55,8 +55,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-]
+    'https://cd73-2804-29b8-5006-1d3d-9a83-89ff-fece-cccb.ngrok-free.app',]
+CSRF_TRUSTED_ORIGINS = ['https://cd73-2804-29b8-5006-1d3d-9a83-89ff-fece-cccb.ngrok-free.app']
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = False
