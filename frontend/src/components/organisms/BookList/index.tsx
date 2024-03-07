@@ -10,31 +10,37 @@ import { useState } from "react";
 import { staticBookList } from "./arrays";
 import { apiRoute } from "@/utils/api";
 import { useRouter } from "next/router";
+import NoResults from "@/components/atoms/NoResults";
 
 interface bookListProps {
     bookData: BookElementProps[];
 }
 
 export default function BookList({ bookData }: bookListProps) {
-    const [bookListState, setBookListState] =
-        useState<BookElementProps[]>(bookData);
-    const router = useRouter()
+    const [bookListState, setBookListState] = useState<BookElementProps[]>(
+        bookData || []
+    );
+    const router = useRouter();
 
     return (
         <BookListContainer>
-            <BookListContent>
-                {bookListState.map((book) => (
-                    <BookElement
-                        key={book.id}
-                        {...book}
-                        onRemove={(bookId) =>
-                            setBookListState((prev) =>
-                                prev.filter((book) => book.id != bookId)
-                            )
-                        }
-                    />
-                ))}
-            </BookListContent>
+            {bookData && bookData.length > 0 ? (
+                <BookListContent>
+                    {bookListState.map((book) => (
+                        <BookElement
+                            key={book.id}
+                            {...book}
+                            onRemove={(bookId) =>
+                                setBookListState((prev) =>
+                                    prev.filter((book) => book.id != bookId)
+                                )
+                            }
+                        />
+                    ))}
+                </BookListContent>
+            ) : (
+                <NoResults />
+            )}
             <BookListAside>
                 <AsideCard>
                     <h2>Boas vindas</h2>
@@ -48,7 +54,12 @@ export default function BookList({ bookData }: bookListProps) {
                 </AsideCard>
                 <AsideCard>
                     <h2>Ferramentas</h2>
-                    <ButtonTool color="#2eca50" onClick={() => router.push('/create')}>Cadastrar Livro</ButtonTool>
+                    <ButtonTool
+                        color="#2eca50"
+                        onClick={() => router.push("/create")}
+                    >
+                        Cadastrar Livro
+                    </ButtonTool>
                     <ButtonTool
                         color="#001CFF"
                         onClick={() => window.open(`${apiRoute}admin/`)}

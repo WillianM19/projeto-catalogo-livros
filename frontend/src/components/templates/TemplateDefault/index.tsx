@@ -8,13 +8,11 @@ interface templateDefaultProps {
     children: ReactNode;
 }
 
-export default function TemplateDefault({
-    children,
-}: templateDefaultProps) {
+export default function TemplateDefault({ children }: templateDefaultProps) {
     const router = useRouter();
     return (
         <DivTemplateDefault>
-            <Header compact={router.asPath != "/"}/>
+            <Header compact={router.asPath != "/"} />
             <DivContent>{children}</DivContent>
             <Footer />
         </DivTemplateDefault>
@@ -40,5 +38,5 @@ const DivTemplateDefault = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(231, 242, 255);
+    background-color: #e7f2ff;
 `;

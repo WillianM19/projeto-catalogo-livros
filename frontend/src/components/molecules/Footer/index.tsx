@@ -6,8 +6,9 @@ export default function Footer() {
             <FooterContent>
                 <span>BookFind</span>
                 <ul>
-                    <li>Github</li>
-                    <li>Sobre</li>
+                    <li>
+                        <a href="https://github.com/WillianM19">Github</a>
+                    </li>
                 </ul>
             </FooterContent>
         </FooterContainer>

@@ -1,4 +1,3 @@
-import InputHeader from "@/components/atoms/InputHeader";
 import InputMain from "@/components/atoms/InputMain";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -11,12 +10,11 @@ interface headerProps {
 export default function Header({ compact }: headerProps) {
     const router = useRouter();
 
-
     return (
         <HeaderContainer compact={compact}>
             <HeaderContent compact={compact}>
                 <h1 onClick={() => router.push("/")}>BookFind</h1>
-                {compact && <InputHeader />}
+                {compact && <InputMain compact />}
             </HeaderContent>
         </HeaderContainer>
     );

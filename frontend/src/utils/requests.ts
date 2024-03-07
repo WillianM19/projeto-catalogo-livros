@@ -2,10 +2,10 @@ import { BookElementProps } from "@/components/molecules/BookElement"
 import { apiRequest } from "./api"
 
 //Requests
-export async function getBooks() {
+export async function getBooks(search?: string) {
     try {
       const res = await apiRequest.get(
-        `api/books/`,
+        `api/books/${search ? `?search=${search}` : ''}`,
       )
       return res.data
     } catch (error) {
