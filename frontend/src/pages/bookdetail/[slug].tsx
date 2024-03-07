@@ -27,12 +27,12 @@ export default function BookDetail() {
     }, [router]);
 
     async function removeBookContentInDetail() {
-        if(bookData && confirm('Você deseja remover este livro?')){
-            await deleteBook(bookData?.id)
-            alert('Livro Removido')
-            router.replace('/')
+        if (bookData && confirm("Você deseja remover este livro?")) {
+            await deleteBook(bookData?.id);
+            alert("Livro Removido");
+            router.replace("/");
         } else {
-            console.log('Remoção cancelada')
+            console.log("Remoção cancelada");
         }
     }
 
@@ -76,7 +76,10 @@ export default function BookDetail() {
                             />
                             Voltar
                         </ButtonActionDetail>
-                        <ButtonActionDetail color="#001CFF">
+                        <ButtonActionDetail
+                            color="#001CFF"
+                            onClick={() => router.push(`/edit/${bookData?.id}`)}
+                        >
                             <Image
                                 src={IconEditBook}
                                 width={16}
@@ -85,7 +88,10 @@ export default function BookDetail() {
                             />
                             Editar
                         </ButtonActionDetail>
-                        <ButtonActionDetail color="#f35e5e" onClick={removeBookContentInDetail}>
+                        <ButtonActionDetail
+                            color="#f35e5e"
+                            onClick={removeBookContentInDetail}
+                        >
                             <Image
                                 src={IconRemoveBook}
                                 width={16}

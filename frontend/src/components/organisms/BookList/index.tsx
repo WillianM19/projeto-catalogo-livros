@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { staticBookList } from "./arrays";
 import { apiRoute } from "@/utils/api";
+import { useRouter } from "next/router";
 
 interface bookListProps {
     bookData: BookElementProps[];
@@ -17,6 +18,7 @@ interface bookListProps {
 export default function BookList({ bookData }: bookListProps) {
     const [bookListState, setBookListState] =
         useState<BookElementProps[]>(bookData);
+    const router = useRouter()
 
     return (
         <BookListContainer>
@@ -46,7 +48,7 @@ export default function BookList({ bookData }: bookListProps) {
                 </AsideCard>
                 <AsideCard>
                     <h2>Ferramentas</h2>
-                    <ButtonTool color="#2eca50">Cadastrar Livro</ButtonTool>
+                    <ButtonTool color="#2eca50" onClick={() => router.push('/create')}>Cadastrar Livro</ButtonTool>
                     <ButtonTool
                         color="#001CFF"
                         onClick={() => window.open(`${apiRoute}admin/`)}

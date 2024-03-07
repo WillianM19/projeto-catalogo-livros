@@ -11,7 +11,7 @@ function App() {
 
     async function getBookData() {
         const res = await getBooks();
-        setBookList(res.results)
+        setBookList(res)
     }
     useEffect(() => {
         getBookData();

@@ -15,7 +15,7 @@ export interface BookElementProps {
     pageCount: number;
     year: string | number;
     bookImage: string;
-    onRemove: (bookId: number) => void
+    onRemove?: (bookId: number) => void;
 }
 
 export default function BookElement({
@@ -31,12 +31,12 @@ export default function BookElement({
     const router = useRouter();
 
     async function removeBookContent() {
-        if(confirm('Você deseja remover este livro?')){
-            await deleteBook(id)
-            alert('Livro Removido')
-            onRemove(id)
+        if (confirm("Você deseja remover este livro?")) {
+            await deleteBook(id);
+            alert("Livro Removido");
+            onRemove && onRemove(id);
         } else {
-            console.log('Remoção cancelada')
+            console.log("Remoção cancelada");
         }
     }
 
@@ -44,12 +44,7 @@ export default function BookElement({
         <BookElementContainer>
             <Link href={`/bookdetail/${id}`}>
                 <BookImage>
-                    <Image
-                        src={bookImage}
-                        height={168}
-                        width={110}
-                        alt=""
-                    />
+                    <Image src={bookImage} height={168} width={110} alt="" />
                 </BookImage>
             </Link>
             <Link href={`/bookdetail/${id}`}>
@@ -80,7 +75,10 @@ export default function BookElement({
                     />
                     Abrir
                 </ButtonAction>
-                <ButtonAction color="#001CFF">
+                <ButtonAction
+                    color="#001CFF"
+                    onClick={() => router.push(`/edit/${id}`)}
+                >
                     <Image
                         src={IconEditBook}
                         width={14}
